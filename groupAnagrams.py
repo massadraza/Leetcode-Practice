@@ -9,10 +9,14 @@ class Solution:
 
         # Using sorted(S) returns a list of each individual character
         # Must join using join() function with the character associated
-
+        """
+       
         for s in strs:
             stringSorted = ''.join(sorted(s))
             strs2[stringSorted].append(s)
-        return list(strs2.values())
+        return list(strs2.values()) 
+        
+        """
 
-          
+        # Efficient Solution
+         

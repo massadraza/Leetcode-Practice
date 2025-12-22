@@ -9,8 +9,3 @@ class Solution:
             if target - val in visited:
                 return [visited[target - val], index]
             visited[val] = index
-        
-
-                
-        
-        
