@@ -1,5 +1,6 @@
 class Solution:
     def topKFrequent(self, nums: List[int], k: int) -> List[int]:
+        """
         counter = {}
         visited = set()
 
@@ -29,4 +30,25 @@ class Solution:
             
         return result
                 
+    """
+        # Efficient Soln. using Bucket Sort Algorithm
+        
+        counter = {}
+        freq = []
 
+        for i in range(len(nums) + 1):
+            freq.append([])
+        
+        for n in nums:
+            counter[n] = 1 + counter.get(n, 0)
+
+        for key, value in counter.items():
+            freq[value].append(key)
+
+        result = []
+
+        for i in range(len(nums), 0, -1):
+            for n in freq[i]:
+                result.append(n)
+                if(len(result) == k):
+                    return result
