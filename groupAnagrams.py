@@ -1,22 +1,30 @@
 class Solution:
-
-    # Created by Massad Raza 
     def groupAnagrams(self, strs: List[str]) -> List[List[str]]:
 
-        # Inefficient Solution (uses sorting)
-        # using a defaultdict() automatically assigns a key of whatever you suggested
-        strs2 = defaultdict(list)
-
-        # Using sorted(S) returns a list of each individual character
-        # Must join using join() function with the character associated
         """
-       
-        for s in strs:
-            stringSorted = ''.join(sorted(s))
-            strs2[stringSorted].append(s)
-        return list(strs2.values()) 
-        
-        """
+        words = []
+        result = []
 
-        # Efficient Solution
-         
+        for i in range(len(strs)):
+            sortedWord = ''.join(sorted(strs[i]))
+            words.append(sortedWord)
+
+        visited = set()
+
+        for index in range(len(words)):
+            if index in visited:
+                continue 
+
+            currWordSorted = words[index]
+            temp = []
+            temp.append(strs[index])
+            visited.add(index)
+
+            for i in range(index + 1, len(words)):
+                if currWordSorted == words[i] and i not in visited:
+                    temp.append(strs[i])
+                    visited.add(i)
+            result.append(temp)
+
+        return result    
+        """            
