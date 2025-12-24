@@ -15,4 +15,15 @@ class Solution:
                 pointerB = pointerB - 1
 
         """   
-        
+        pointerA = 0
+        pointerB = len(numbers) - 1
+
+        while(pointerA < pointerB):
+            currSum = numbers[pointerA] + numbers[pointerB]
+
+            if currSum > target:
+                pointerB = pointerB - 1
+            elif currSum < target: 
+                pointerA = pointerA + 1
+            else:
+                return [pointerA + 1, pointerB + 1]
