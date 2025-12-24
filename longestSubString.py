@@ -27,5 +27,17 @@ class Solution:
                 q = p + 1
         
         return maxCount
-"""
+        """
 
+        charSet = set()
+        left = 0
+        result = 0
+        
+        for r in range(len(s)):
+            while s[r] in charSet:
+                charSet.remove(s[left])
+                left = left + 1
+            charSet.add(s[r])
+            result = max(result, len(charSet))
+        
+        return result
